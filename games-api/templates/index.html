@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <!--  Load CSS in Flask with html-->
+      <link rel="stylesheet" href='/static/styles/styles.css' />
+        <title>League Match Web App</title>
+    </head>
+    <h1>League Match Database</h1>
+    <body>
+        {% for message in get_flashed_messages() %}
+        {{message}}
+        {%endfor%}
+
+        <form method="POST">
+            <label>Enter game ID:</label>
+            <input type="number" name="gameid" placeholder="Game ID..." required><br/>
+            <label>Enter Sport name:</label>
+            <input type="text" name="sport" placeholder="sport name..." required><br/>
+            <label>Enter team 1 name:</label>
+            <input type="text" name="team1" placeholder="Team 1 name..." required><br/>
+            <label>Enter team 1 score:</label>
+            <input type="number" name="score1" placeholder="Team 1 score..." required><br/>
+            <label>Enter team 2 name:</label>
+            <input type="text" name="team2" placeholder="Team 2 name..." required><br/>
+			      <label>Enter team 2 score:</label>
+            <input type="number" name="score2" placeholder="Team 2 score..." required><br/>
+            <label>Enter game date:</label>
+            <input type="date" name="gamedate" required><br/>
+            <input type = "submit" value = "Submit Match"/><br/>
+        </form>
+
+        <form method="GET">
+        <style>
+          table, th, td {
+            border:1px solid black;
+          }
+          </style>
+        <table style="width:100%">
+          <tr>
+            <th>gameid</th>
+            <th>sport</th>
+            <th>team1</th>
+            <th>team2</th>
+            <th>score1</th>
+            <th>score2</th>
+            <th>gamedate</th>
+          </tr>
+          {%for games in data%}
+             <tr>
+               <td>{{games[0]}}</td>
+               <td>{{games[1]}}</td>
+               <td>{{games[2]}}</td>
+               <td>{{games[3]}}</td>
+               <td>{{games[4]}}</td>
+               <td>{{games[5]}}</td>
+               <td>{{games[6]}}</td>
+              </tr>
+          {%endfor%}
+        </table>    
+      </form>
+    </body>
+</html>
